@@ -78,6 +78,7 @@
 
 /**
  * during the creation phase, js engine moves our varaible and functions to the top of our code and this is known as Hoisting.
+ * functions are completed hoisted but variable are hoisted but not initialised until execution
  */
 
 // console.log(count) 
@@ -91,12 +92,97 @@ var count = 1
 
 // Temporal Dead Zone means the variable are in the scope but they are not yet declared. let and const will be in temporal deadzone example below
 
-// console.log(b,c);
+/**  console.log(b,c);
 
 let b = 0;
 const c = 9;
+*/
 
 // this will throw the error. as the value are in TDZ.
+
+// spread operator vs rest operators
+/**
+ * function sum(...nums){ // if we pass as function param at this point it is rest operator.
+ * return nums[0] + nums[1]
+ * }
+ * 
+ * let arr = [1,2]
+ * sum(...arr) // spread operator
+ * 
+ * 
+ * one thing to consider would be rest operator should always be the last param for a function.
+ * for eg. function sum(...nums, a,b) // this wil throw a error
+ *  function sum(a,b,...nums)  // works fine
+ */
+
+
+// Arrow functions
+/**
+ * this keyword ?
+ * 
+ * In normal function , this points to parent scope
+ * in Arrow function, this points to global scope
+ * 
+ */
+
+// closures
+/**
+ * closure gives you access to a outer functions scope from an innner function.
+ * It is a combination of a function bundled together with reference of its surrounding state (the lexical environment)
+ * In Javascript, closures are created everytime a function is created, at function creation phase.
+ */
+
+// closure scope chain
+/** 
+ * Every closure has three scopes
+ * local scope --- outer function scope ---- global scope
+ * 
+ * for eg.
+ * 
+ * var username = "Javascript" // global scope
+ * function outer(){
+ * var name = "Learner" // outer scope
+ * function display(){ // local scope
+ * console.log(name, username);
+ * }
+ * return display;
+ * }
+ * 
+ * outer()() // prints Learner Javascript
+ */
+// closures gives huge performance improvement
+/** function closure(){
+    let a = []
+    for(let i=0; i< 1000000; i++){
+        a[i] = i*i
+    }
+    return function (index){
+        console.log(a[index])
+    }
+}
+let closureTest = closure();
+
+console.time("5")
+closureTest(5)
+console.timeEnd("5")
+console.time("10")
+closureTest(10)
+console.timeEnd("10")
+console.time("100")
+closureTest(100)
+console.timeEnd("100")
+console.time("1000")
+closureTest(1000)
+console.timeEnd("1000")
+console.time("10000")
+closureTest(10000)
+console.timeEnd("10000") */
+
+
+
+ 
+
+
 
 
  
